@@ -26,21 +26,28 @@ rownames(my.data)
 my.data$category <- rownames(my.data)
 
 # How much money was spent on personal care in 1940?
-my.data[4, 1]
+my.data['Personal Care', 'X1940']
 
 # How much money was spent on Food and Tobacco in 1960
-my.data[1, 5]
+my.data['Food and Tobacco', 'X1960']
 
 # What was the highest expenditure category in 1960?
-
+highest.exp <- my.data$category[my.data$X1960 == max(my.data$X1960)]
 
 ### Bonus ###
 
 # Write a function that takes in a year as a parameter, and 
 # returns the highest spending category of that year
-
+DetectHighest <- function(year) {
+  return (my.data$category[my.data[year] == max(my.data[year])])
+}
 # Using your function, determine the highest spending category of each year
-
+highest.1950 <- DetectHighest('X1950')
 
 # Write a loop to cycle through the years, and store the highest spending category of
 # each year in a list
+highest <- list()
+for (year in seq(1940, 1960, 5)) {
+  year.index <- paste0('X', year)
+  highest[year.index] <- DetectHighest(year.index)
+}
