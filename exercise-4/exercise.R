@@ -30,7 +30,7 @@ min.val <- min(spending)
 largest.recipient <- org[spending == max.val]
 
 # Which organization received the smallest grant?
-largest.recipient <- org[spending == min.val]
+smallest.recipient <- org[spending == min.val]
 
 # How many grants were awarded in 2010?
 grant.count <- length(spending)
